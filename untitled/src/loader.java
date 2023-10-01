@@ -12,7 +12,7 @@ public class loader extends JFrame {
 
         //close when x is pressed
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(600, 800);
+        setSize(590, 800);
         setLocationRelativeTo(null);
         setLayout(null);
 
@@ -30,7 +30,6 @@ public class loader extends JFrame {
         add(searchField);
 
         //add search button
-        
 
         JButton searchButton = new JButton(addImage("src/Images/search1.png",70,40));
         searchButton.setBounds( 490,15,70,40);
@@ -46,6 +45,10 @@ public class loader extends JFrame {
         temperatureText.setFont(new Font("Dialog",Font.BOLD,50));
         temperatureText.setHorizontalAlignment(SwingConstants.CENTER);
         add(temperatureText);
+
+        //add description
+        //add humidity
+        //add wind speed and direction.
 
 
 
