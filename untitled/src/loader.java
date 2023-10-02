@@ -1,6 +1,10 @@
+import org.json.simple.JSONObject;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -33,6 +37,11 @@ public class loader extends JFrame {
         JButton searchButton = new JButton(addImage("src/Images/search1.png",70,40));
         searchButton.setBounds( 490,15,70,40);
         add(searchButton);
+
+JLabel city = new JLabel();
+city.setFont(new Font("Dialog",Font.BOLD,20));
+city.setBounds(100,100,100,100);
+add(city);
 
 
         JLabel cloudyIcon = new JLabel(addImage("src/Images/cloudy.png",300,290));
@@ -70,7 +79,29 @@ public class loader extends JFrame {
         windspeedtxt.setBounds(415,555,120,60);
         add(windspeedtxt);
 
-    
+
+        searchButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            try
+            {
+                JSONObject data = backEndLogic.getWeatherData(searchField.getText().toString());
+
+                temperatureText.setText(data.get("temperature").toString());
+                windspeedtxt.setText("<html> <b> Windspeed </b>"+ data.get("windspeed").toString()+"km/h</html>");
+                humidTxt.setText("<html> <b> Humidity </b>"+ data.get("humidity")+ "%</html>");
+                weatherDescription.setText(data.get("weather_condition").toString());
+
+
+            }catch (Exception a){
+                JOptionPane.showMessageDialog(new JOptionPane(),"Enter Valid Location");
+            }
+
+            }
+        });
+
+
         //add wind speed and direction.
 
 
@@ -96,7 +127,8 @@ public class loader extends JFrame {
        SwingUtilities.invokeLater(new Runnable() {
            @Override
            public void run() {
-               new loader().setVisible(true);
+              new loader().setVisible(true);
+
            }
        });
     }
