@@ -33,8 +33,17 @@ public class loader extends JFrame {
 
         //add search button
 
-        JButton searchButton = new JButton(addImage("src/Images/search1.png", 70, 40));
+        ImageIcon icon1 = new ImageIcon(loader.class.getResource("/search1.png"));
+
+        // Optionally, scale the image to your desired size
+        Image scaledImage1 = icon1.getImage().getScaledInstance(70, 40, Image.SCALE_SMOOTH);
+        icon1 = new ImageIcon(scaledImage1);
+
+        JButton searchButton = new JButton(icon1);
         searchButton.setBounds(490, 15, 70, 40);
+
+       
+        searchButton.setBorderPainted(false);
         add(searchButton);
 
         JLabel city = new JLabel();
@@ -43,7 +52,14 @@ public class loader extends JFrame {
         add(city);
 
 
-        JLabel cloudyIcon = new JLabel(addImage("src/Images/cloudy.png", 300, 290));
+
+
+        ImageIcon icon = new ImageIcon(loader.class.getResource("/cloudy.png"));
+
+        // Optionally, scale the image to your desired size
+        Image scaledImage = icon.getImage().getScaledInstance(300, 290, Image.SCALE_SMOOTH);
+        icon = new ImageIcon(scaledImage);
+        JLabel cloudyIcon = new JLabel(icon);
         cloudyIcon.setBounds(-10, 90, 600, 290);
         add(cloudyIcon);
 
@@ -60,7 +76,15 @@ public class loader extends JFrame {
         weatherDescription.setHorizontalAlignment(SwingConstants.CENTER);
         add((weatherDescription));
 
-        JLabel humidityImage = new JLabel(addImage("src/Images/humid.png", 60, 60));
+
+        ImageIcon icon11 = new ImageIcon(loader.class.getResource("/humid.png"));
+
+        // Optionally, scale the image to your desired size
+        Image scaledImage11 = icon11.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
+        icon11 = new ImageIcon(scaledImage11);
+
+
+        JLabel humidityImage = new JLabel(icon11);
         humidityImage.setBounds(60, 550, 60, 60);
         add(humidityImage);
 
@@ -69,9 +93,20 @@ public class loader extends JFrame {
         humidTxt.setBounds(135, 555, 100, 60);
         add(humidTxt);
 
-        JLabel windSpeedIcon = new JLabel(addImage("src/Images/windIcon.png", 50, 50));
+
+        ImageIcon icon111 = new ImageIcon(loader.class.getResource("/windIcon.png"));
+
+        // Optionally, scale the image to your desired size
+        Image scaledImage111 = icon111.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
+        icon111 = new ImageIcon(scaledImage111);
+
+
+        JLabel windSpeedIcon = new JLabel(icon111);
         windSpeedIcon.setBounds(340, 550, 60, 60);
         add(windSpeedIcon);
+
+
+
 
         JLabel windspeedtxt = new JLabel("<html> <b> Windspeed </b> 5.2km/h</html>");
         windspeedtxt.setFont(new Font("Dialog", Font.PLAIN, 20));
@@ -92,16 +127,40 @@ public class loader extends JFrame {
                     weatherDescription.setText(data.get("weather_condition").toString());
 
                     if (data.get("weather_condition").equals("Clear")) {
-                        cloudyIcon.setIcon(addImage("src/Images/sunny.png", 300, 290));
+
+                        ImageIcon icon = new ImageIcon(loader.class.getResource("/sunny.png"));
+
+                        // Optionally, scale the image to your desired size
+                        Image scaledImage = icon.getImage().getScaledInstance(300, 290, Image.SCALE_SMOOTH);
+                        icon = new ImageIcon(scaledImage);
+                        cloudyIcon.setIcon(icon);
+
+
+
 
                     } else if (data.get("weather_condition").equals("Cloudy")) {
-                        cloudyIcon.setIcon(addImage("src/Images/cloudy.png", 300, 290));
+                        ImageIcon icon = new ImageIcon(loader.class.getResource("/cloudy.png"));
+
+                        // Optionally, scale the image to your desired size
+                        Image scaledImage = icon.getImage().getScaledInstance(300, 290, Image.SCALE_SMOOTH);
+                        icon = new ImageIcon(scaledImage);
+                        cloudyIcon.setIcon(icon);
 
                     } else if (data.get("weather_condition").equals("Rain")) {
-                        cloudyIcon.setIcon(addImage("src/Images/rain.png", 300, 290));
+                        ImageIcon icon = new ImageIcon(loader.class.getResource("/rain.png"));
+
+                        // Optionally, scale the image to your desired size
+                        Image scaledImage = icon.getImage().getScaledInstance(300, 290, Image.SCALE_SMOOTH);
+                        icon = new ImageIcon(scaledImage);
+                        cloudyIcon.setIcon(icon);
 
                     } else if (data.get("weather_condition").equals("Snow")) {
-                        cloudyIcon.setIcon(addImage("src/Images/snow.png", 300, 290));
+                        ImageIcon icon = new ImageIcon(loader.class.getResource("/snow.png"));
+
+                        // Optionally, scale the image to your desired size
+                        Image scaledImage = icon.getImage().getScaledInstance(300, 290, Image.SCALE_SMOOTH);
+                        icon = new ImageIcon(scaledImage);
+                        cloudyIcon.setIcon(icon);
 
                     }
 

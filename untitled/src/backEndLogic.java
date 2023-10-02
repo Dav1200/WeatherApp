@@ -18,25 +18,30 @@ public class backEndLogic {
 
 
         JSONArray locationData = getLocation(location);
+        //testing if locationData is not null
         assert locationData != null;
+
+        //get the location which will be used to retrieve weather information
         JSONObject locationa = (JSONObject) locationData.get(0);
+
+        //pass the lat and long
         double latitude = (double) locationa.get("latitude");
         double longitude = (double) locationa.get("longitude");
 
+
+        //connect to weatherapi to get weather based on the longitude and latitude
         String urlstring = "https://api.open-meteo.com/v1/forecast?latitude="+latitude+"&longitude="+longitude+
                 "&hourly=temperature_2m,relativehumidity_2m,weathercode,windspeed_10m&timezone=Europe%2FLondon";
 
+
         try {
 
-
             HttpURLConnection conn = apiResponse(urlstring);
-
             if(conn.getResponseCode()!= 200){
                 System.out.println("error datta");
                 return  null;
 
             }
-
             StringBuilder resultjson = new StringBuilder();
             Scanner scanner = new Scanner(conn.getInputStream());
             while (scanner.hasNext()){
@@ -48,8 +53,10 @@ public class backEndLogic {
             JSONParser parse = new JSONParser();
             JSONObject resultsobject = (JSONObject) parse.parse(String.valueOf(resultjson));
 
+
             JSONObject hours = (JSONObject) resultsobject.get("hourly");
 
+            //updated time with current time frame
             JSONArray time = (JSONArray) hours.get("time");
             int index = findIndexOfCurrentTime(time);
 
