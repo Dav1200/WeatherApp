@@ -195,7 +195,13 @@ public class loader extends JFrame {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new loader().setVisible(true);
+
+                loader a  = new loader();
+                a.setUndecorated(true);
+                a.setVisible(true);
+                //a.setBackground(new Color(0, 0, 0, 0));
+
+               // a.setOpacity(1.0f);
 
             }
         });
