@@ -45,18 +45,18 @@ add(city);
 
 
         JLabel cloudyIcon = new JLabel(addImage("src/Images/cloudy.png",300,290));
-        cloudyIcon.setBounds(0,100,600,290);
+        cloudyIcon.setBounds(-10,90,600,290);
         add(cloudyIcon);
 
         JLabel temperatureText  = new JLabel("10 C");
-        temperatureText.setBounds(0,380,600,40);
+        temperatureText.setBounds(-10,400,600,40);
         temperatureText.setFont(new Font("Dialog",Font.BOLD,40));
         temperatureText.setHorizontalAlignment(SwingConstants.CENTER);
         add(temperatureText);
 
 
         JLabel weatherDescription = new JLabel("Sunny");
-        weatherDescription.setBounds(0,410, 600, 60);
+        weatherDescription.setBounds(-10,430, 600, 60);
         weatherDescription.setFont(new Font("Dialog",Font.PLAIN,40));
         weatherDescription.setHorizontalAlignment(SwingConstants.CENTER);
         add((weatherDescription));
@@ -93,6 +93,21 @@ add(city);
                 humidTxt.setText("<html> <b> Humidity </b>"+ data.get("humidity")+ "%</html>");
                 weatherDescription.setText(data.get("weather_condition").toString());
 
+                if(data.get("weather_condition").equals("Clear")){
+                    cloudyIcon.setIcon(addImage("src/Images/sunny.png",300,290));
+
+                } else if (data.get("weather_condition").equals("Cloudy")) {
+                    cloudyIcon.setIcon(addImage("src/Images/cloudy.png",300,290));
+
+                }
+                else if (data.get("weather_condition").equals("Rain")) {
+                    cloudyIcon.setIcon(addImage("src/Images/rain.png",300,290));
+
+                }
+                else if (data.get("weather_condition").equals("Snow")) {
+                    cloudyIcon.setIcon(addImage("src/Images/snow.png",300,290));
+
+                }
 
             }catch (Exception a){
                 JOptionPane.showMessageDialog(new JOptionPane(),"Enter Valid Location");

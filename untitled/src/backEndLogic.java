@@ -15,6 +15,8 @@ import java.util.concurrent.ExecutionException;
 public class backEndLogic {
 
     public static JSONObject getWeatherData(String location){
+
+
         JSONArray locationData = getLocation(location);
         assert locationData != null;
         JSONObject locationa = (JSONObject) locationData.get(0);
